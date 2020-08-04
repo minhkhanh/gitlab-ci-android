@@ -1,14 +1,13 @@
 FROM openjdk:8-jdk
 LABEL Khanh Tran <khanhtm@vng.com.vn>
 
-ENV BUILD_TOOLS "build-tools;28.0.3 build-tools;29.0.3 build-tools;30.0.1"
-ENV CMAKE "build-tools;28.0.3 build-tools;29.0.3 build-tools;30.0.1"
-ENV TARGET_SDK "28"
 ENV ANDROID_HOME "/opt/android-sdk-linux"
 ENV ANDROID_SDK_ROOT "/opt/android-sdk-linux"
 ENV REPO_OS_OVERRIDE "linux"
 # ENV GLIBC_VERSION "2.27-r0"
 ENV PATH ${PATH}:${ANDROID_HOME}/cmdline-tools/tools/bin:${ANDROID_HOME}/tools:${ANDROID_HOME}/platform-tools
+ENV ANDROID_NDK_VERSION "21.0.6113669"
+ENV ANDROID_NDK_HOME ${ANDROID_HOME}/ndk/${ANDROID_NDK_VERSION}
 
 # Install required dependencies
 RUN dpkg --add-architecture i386
@@ -35,7 +34,7 @@ RUN mkdir -p /root/.android/ && touch /root/.android/repositories.cfg && \
 	sdkmanager "--update" && \
 	sdkmanager "build-tools;28.0.3" "build-tools;29.0.3" "build-tools;30.0.1" "build-tools;21.1.2" && \
     sdkmanager "cmake;3.10.2.4988404" && \
-    sdkmanager "ndk;21.3.6528147" && \
+    sdkmanager "ndk;${ANDROID_NDK_VERSION}" && \
     sdkmanager "platforms;android-30" "platforms;android-29" "platforms;android-21" && \
     # sdkmanager "emulator" "system-images;android-30;google_apis_playstore;x86_64" && \
     sdkmanager "platform-tools" "extras;android;m2repository" "extras;google;google_play_services" "extras;google;m2repository" "patcher;v4" "skiaparser;1"
