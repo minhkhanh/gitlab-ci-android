@@ -42,6 +42,7 @@ RUN mkdir -p /root/.android/ && touch /root/.android/repositories.cfg && \
     sdkmanager "platforms;android-30" "platforms;android-29" "platforms;android-21" && \
     # sdkmanager "emulator" "system-images;android-30;google_apis_playstore;x86_64" && \
     sdkmanager "platform-tools" "extras;android;m2repository" "extras;google;google_play_services" "extras;google;m2repository" "patcher;v4" "skiaparser;1"
+RUN sdkmanager "ndk;20.1.5948944" 
 
 # RVM & Ruby needed for fastlane below
 RUN /bin/bash -l -c "gpg --keyserver hkp://keys.gnupg.net --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3 7D2BAF1CF37B13E2069D6956105BD0E739499BDB" && \
