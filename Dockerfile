@@ -16,7 +16,7 @@ RUN apt-get update -qq
 RUN DEBIAN_FRONTEND=noninteractive apt-get install -y libc6:i386 libstdc++6:i386 libgcc1:i386 libncurses5:i386 \
 	libz1:i386 zip python3 p7zip-full cmake build-essential python3-distutils python3-apt \
 	librsvg2-bin graphicsmagick imagemagick
-
+RUN DEBIAN_FRONTEND=noninteractive apt-get install -y lftp
 # RUN apk add --no-cache --virtual=.build-dependencies wget unzip ca-certificates bash && \
 # 	wget https://raw.githubusercontent.com/sgerrand/alpine-pkg-glibc/master/sgerrand.rsa.pub -O /etc/apk/keys/sgerrand.rsa.pub && \
 # 	wget https://github.com/sgerrand/alpine-pkg-glibc/releases/download/${GLIBC_VERSION}/glibc-${GLIBC_VERSION}.apk -O /tmp/glibc.apk && \
