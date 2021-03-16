@@ -53,6 +53,16 @@ RUN /bin/bash -l -c "gpg --keyserver hkp://keys.gnupg.net --recv-keys 409B6B1796
     /bin/bash -l -c "gem install bundler" && \
     /bin/bash -l -c "gem install fastlane"
 
+# Install tools to build third-party library
+RUN apt-get update -y
+RUN apt-get install -y autoconf
+RUN apt-get install -y automake
+RUN apt-get install -y libtool
+RUN apt-get install -y pkg-config
+RUN apt-get install -y nasm
+RUN apt-get install -y yasm
+RUN apt-get install -y patch
+
 # install pip3
 RUN curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py && python3 get-pip.py && rm get-pip.py && \
     pip3 install requests telegram-send pydrive pexpect pyotp
