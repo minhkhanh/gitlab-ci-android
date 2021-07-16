@@ -44,7 +44,7 @@ RUN mkdir -p /root/.android/ && touch /root/.android/repositories.cfg && \
     sdkmanager "platform-tools" "extras;android;m2repository" "extras;google;google_play_services" "extras;google;m2repository" "patcher;v4" "skiaparser;1"
 
 # RVM & Ruby needed for fastlane below
-RUN /bin/bash -l -c "gpg --keyserver hkp://keys.gnupg.net --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3 7D2BAF1CF37B13E2069D6956105BD0E739499BDB" && \
+RUN /bin/bash -l -c "gpg --keyserver hkp://pool.sks-keyservers.net --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3 7D2BAF1CF37B13E2069D6956105BD0E739499BDB" && \
     \curl -L https://get.rvm.io | bash -s stable && \
     /bin/bash -l -c "rvm requirements" && \
     /bin/bash -l -c "rvm install 2.5.1" && \
